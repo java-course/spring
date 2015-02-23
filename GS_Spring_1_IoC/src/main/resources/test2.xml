@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- Inner bean - Обратить внимание на autowire-candidate="false" и его связь с SpringAnnotated.class -->
+    <bean id="outerbean" class="edu.javacourse.spring.bean.SpringTest"  autowire-candidate="false">
+        <property name="number" value="1230"/>
+        <property name="child">
+
+            <bean class="edu.javacourse.spring.bean.SpringTestChild">
+                <property name="hello" value="Hello, world from inner bean!"/>
+                <!--
+                     Empty string
+                <property name="hello" value=""/>
+                     Null string
+                <property name="hello><null/></property>
+                -->
+            </bean>
+
+        </property>
+    </bean>
+
+
+</beans>

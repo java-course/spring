@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        default-init-method="defaultInit"
+        default-destroy-method="defaultDestroy"
+        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- <beans default-init-method="init"> and many-many other -->
+
+
+    <bean id="init1" class="edu.javacourse.spring.bean.init.InitBean1" init-method="init" destroy-method="cleanup"/>
+    <bean id="init2" class="edu.javacourse.spring.bean.init.InitBean2" lazy-init="true"/>
+
+
+    <!--<bean id="init3" class="edu.javacourse.spring.bean.init.InitBean3"/>-->
+    <!--<bean id="init4" class="edu.javacourse.spring.bean.init.InitBean4"/>-->
+    <!--<bean id="init5" class="edu.javacourse.spring.bean.init.InitBean5"/>-->
+
+</beans>

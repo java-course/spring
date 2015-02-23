@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="testSpringBean" class="edu.javacourse.spring.bean.SpringTest" depends-on="dependedBean">
+        <property name="number" value="1230"/>
+        <property name="child" ref="dependedBean"/>
+        <property name="otherChild">
+            <!-- В случае local (только если бин в этом же файле, проверка
+            будет сразу после загрузки XML. Иначе можно использовать ref bean -->
+            <ref local="dependedBean"/>
+        </property>
+    </bean>
+
+    <bean id="dependedBean" class="edu.javacourse.spring.bean.SpringTestChild">
+        <property name="hello" value="Hello, world!"/>
+    </bean>
+
+    <!-- ATTENTION: Circular dependencies !! -->
+    <bean id="constructorBean" class="edu.javacourse.spring.bean.SpringTestConstructor">
+        <constructor-arg type="int" value="7500000"/>
+        <constructor-arg type="java.lang.String" value="John Smith"/>
+        <constructor-arg type="edu.javacourse.spring.bean.SpringTest" ref="testSpringBean"/>
+    </bean>
+
+
+</beans>

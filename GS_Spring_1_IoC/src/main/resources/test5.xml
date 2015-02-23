@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="listBean" class="edu.javacourse.spring.bean.SpringList">
+
+        <property name="stringList">
+            <list>
+                <value>One</value>
+                <value>Two</value>
+                <value>Three</value>
+            </list>
+        </property>
+
+    </bean>
+
+
+    <!-- Вариант инициализации Map в родителе и добавка в потомке - обратить внимание на merge -->
+    <bean id="testMapParent" class="edu.javacourse.spring.bean.SpringMap" abstract="true">
+        <property name="accounts">
+            <map>
+                <entry key="one" value="1.11"/>
+                <entry key="two" value="2.22"/>
+                <entry key="six" value="6.66"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="testMap" parent="testMapParent">
+        <property name="accounts">
+            <!-- MERGE true/false !!! -->
+            <map merge="true">
+                <entry key="seven" value="7.77"/>
+                <entry key="eight" value="8.88"/>
+                <entry key="nine" value="9.99"/>
+            </map>
+        </property>
+    </bean>
+
+
+</beans>
